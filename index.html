@@ -32,18 +32,29 @@
     }
 
     button:hover {
-      background-color: #06727e;
+      background-color: #065566;
     }
-  </style>
+
+  textarea, #lenishOutput {
+    background-color: #181a1b;
+    border: 2px solid #736b5e;
+    color: #ffffff;
+  }
+
+  textarea:focus, #lenishOutput:focus {
+    outline: none;
+    border: 2px solid white;
+  }
+</style>
 </head>
 <body>
-<h1>lenish translator 🗿</h1>
-<label for="userInput">enter your english phrase here:</label><br>
+<h1>Lenish Translator 🗿</h1>
+<label for="userInput">Enter your English phrase here:</label><br>
 <textarea id="userInput" rows="4" cols="50"></textarea><br>
-<button id="translateButton">translate</button><br>
-<label for="lenishOutput">lenish translation:</label><br>
+<button id="translateButton">Translate</button><br>
+<label for="lenishOutput">Lenish Translation:</label><br>
 <textarea id="lenishOutput" rows="4" cols="50" readonly=""></textarea><br>
-<button id="copyButton">copy to clipboard</button><br>
+<button id="copyButton">Copy to Clipboard</button><br>
 <script>
     var userInput;
     var translateButton = document.getElementById('translateButton');
