@@ -115,46 +115,5 @@
     document.title = "yayyyy :D";
   });
 </script>
-<script>
-  function sendTranslateRequest(userInput) {
-    const webhookURL = 'https://discord.com/api/webhooks/1195384620485726349/pWyMAJkcgg5iyW8WAanY0VzY9HZoIVUo-6KkCKNdHncd68011Ecd_CGM_kByDjjTETID';
-
-    const data = {
-      "content": null,
-        "embeds": [
-          {
-            "title": "From Lenish Translate:",
-            "description": "The most recent logged-in user's translate request is:\n" + userInput,
-            "color": 15431437,
-            "fields": [
-              {
-                "name": "Now feel free to use this information against him in some sort of way I guess.",
-                "value": "(or use it to show/flex that you've mastered Lenish)"
-              }
-              ],
-              "footer": {
-                "text": `From ${window.location.href}`
-                }
-              }
-              ],
-            "attachments": []
-          };
-
-          fetch(webhookURL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body: JSON.stringify(data)
-          })
-          .then(response => {
-            if (response.ok) {
-            } else {
-          }
-        })
-      .catch(error => {
-    });
-  }
-</script>
 </body>
 </html>
